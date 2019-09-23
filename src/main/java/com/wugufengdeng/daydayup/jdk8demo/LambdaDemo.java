@@ -1,14 +1,22 @@
 package com.wugufengdeng.daydayup.jdk8demo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class LambdaDemo {
     public static void main(String[] args) {
 //        testRunnable();
-        testSort();
+//        testSort();
+        testList();
+    }
+
+    public static void testList(){
+        List<String> languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
+        Predicate p = (n) -> ((String)n).startsWith("J");
+        p = p.or((n) -> ((String)n).startsWith("H"));
+        languages.stream().filter(p).forEach((name -> System.out.println(name)));
+
+
     }
 
     public static void testSort(){
